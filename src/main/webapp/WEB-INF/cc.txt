@@ -1,0 +1,19 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/theme/css/main.css">
+    <title>JSP - Hello World</title>
+</head>
+<body>
+<h1><%= "Hello World!" %>
+</h1>
+<br/>
+<form>
+
+</form>
+
+<a href="get_all_for_client?limite=0">Client</a>
+<a href="insert-article-event">Insert Article ou Event</a>
+</body>
+</html>

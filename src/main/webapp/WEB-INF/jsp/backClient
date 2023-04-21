@@ -1,0 +1,73 @@
+<%@ page import="com.aina.spring_mvc.model.Commune" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.aina.spring_mvc.model.Article_Event" %><%--
+  Created by IntelliJ IDEA.
+  User: aina
+  Date: 2023-01-11
+  Time: 15:55
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Liste commune</title>
+
+    <style>
+        /* Table Styles */
+        .custom-table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        .custom-table th, .custom-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .custom-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        /* Hover Effect */
+        .custom-table tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<%
+    List<Article_Event> communes = (List<Article_Event>) request.getAttribute("data");
+    int section=(int)request.getAttribute("section");
+%>
+<body>
+<center>
+<form action="search" method="post">
+    <h2>Search : </h2>
+    <p>Titre: <input type="text" name="titre"> About : <input type="text" name="about"><input type="submit" value="valider"> </p>
+</form>
+</center>
+<table class="custom-table">
+    <tr>
+        <th>Sary</th>
+        <th>Titre</th>
+        <th>About</th>
+        <th>date 1</th>
+        <th>date 2</th>
+    </tr>
+    <% for (Article_Event commune : communes) { %>
+    <tr>
+        <td><img src="<%= commune.getSary() %>" style="width: 50px;height: 50px;border-radius: 50px"> </td>
+        <td><%= commune.getTitre() %></td>
+        <td><%= commune.getAbout() %></td>
+        <td><%= commune.getDate1() %>
+        </td><td><%= commune.getDate2() %></td>
+    </tr>
+    <%  } %>
+
+</table>
+<div style="text-align: center;">
+<% for (int i = 0; i < section; i++) { %>
+    <a href="get_all_for_client?limite=<%=i%>"><%=i+1%></a>
+<%}%>
+</div>
+</body>
+</html>
